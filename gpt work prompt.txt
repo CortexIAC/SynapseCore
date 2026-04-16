@@ -1,0 +1,266 @@
+You are continuing development of a custom desktop AI framework called **AI OS**.
+
+DO NOT redesign, simplify, or replace architecture unless explicitly told.
+You must **respect the existing structure and extend it**, not reinvent it.
+
+---
+
+# 🧠 PROJECT OVERVIEW
+
+AI OS is a **modular, multi-interface, AI-assisted desktop environment** built in Python (Tkinter currently), designed to function like a lightweight operating system workspace.
+
+It includes:
+
+* Dynamic UI
+* Multiple “Work Interfaces”
+* Voice control (hold ALT to speak)
+* AI chat + future code assistant
+* Modular tab system (Notebook-based)
+* Runtime-controlled architecture
+
+---
+
+# 🧱 CURRENT ARCHITECTURE
+
+## Core System
+
+* runtime.py → controls app lifecycle, routing, logging, voice start
+* state.py → shared system state
+* voice_controller.py → handles ALT-hold voice input loop
+* settings system (planned but not fully implemented)
+
+## UI Layer
+
+* main_window.py → PRIMARY UI CONTROLLER (DO NOT BREAK)
+* startup.py → intro screen
+* main_menu.py → launcher
+
+## Tabs / Modules
+
+Each tab is modular and attached to ttk.Notebook:
+
+* ChatTab → AI interaction (supports "chat" and "code" mode)
+* DebugTab → logs (connected via runtime.debug_callback)
+* FileManagerTab → file navigation
+* SystemMonitorTab → system stats
+* ControlPanel → admin tools
+
+---
+
+# 🧠 CORE FEATURES IMPLEMENTED
+
+## 1. Dynamic Interface System ✅
+
+Interfaces define which tabs are visible:
+
+default → chat, debug, files, system, control
+development → chat, debug, assistant
+game modding → files, quickbms, brickbench, debug
+internet security → system, nmap, wireshark, debug
+
+Switching interface:
+
+* rebuilds tabs
+* updates VIEW dropdown
+* changes bottom tool buttons
+* may enable special modes (like code mode)
+
+---
+
+## 2. Dynamic Tab Builder ✅
+
+MainWindow.build_tabs(tab_list):
+
+* clears notebook
+* rebuilds tabs based on interface
+* supports built-in + placeholder modules
+
+---
+
+## 3. Voice System (ALT HOLD) ✅
+
+Behavior:
+
+* HOLD ALT → listening
+* RELEASE ALT → processing
+* returns to idle after
+
+States:
+
+* listening
+* processing
+* idle
+
+UI:
+
+* waveform animation (bottom-left)
+* status dot color indicator
+
+---
+
+## 4. Bottom Tool Bar ✅
+
+Context-sensitive buttons:
+
+* changes per interface
+* cleared when switching
+
+Examples:
+
+* Development → Run Code, Explain Code
+* Modding → QuickBMS, BrickBench
+* Security → Nmap, Wireshark
+
+---
+
+# ⚠️ CURRENT ISSUES TO FIX
+
+## 🔴 Issue 1 — VIEW menu not updating after interface switch
+
+Fix:
+
+* call build_view_menu() inside build_tabs()
+
+---
+
+## 🔴 Issue 2 — Bottom buttons persist incorrectly
+
+Fix:
+
+* always call set_bottom_tools([]) when switching interfaces
+
+---
+
+## 🔴 Issue 3 — Bottom buttons not appearing on first load
+
+Fix:
+
+* call set_interface("default") at end of MainWindow init
+
+---
+
+## 🔴 Issue 4 — Voice waveform overlapping UI
+
+Fix direction:
+
+* move waveform ABOVE bottom bar OR embed inside bottom bar
+
+---
+
+## 🔴 Issue 5 — Code mode buttons:
+
+* only appear in development ✔
+* must disappear when leaving ❌ (needs enforcement)
+
+---
+
+## 🔴 Issue 6 — Visual polish needed:
+
+* spacing
+* layering
+* consistent UI zones
+
+---
+
+# 🎯 CURRENT GOALS (SHORT TERM)
+
+1. Stabilize interface switching system
+2. Fix bottom bar behavior completely
+3. Fix voice UI placement + behavior
+4. Ensure modules appear/disappear correctly per interface
+5. Add 1 working module per interface (not placeholders)
+
+---
+
+# 🚀 MID-TERM GOALS
+
+* Real tool integration:
+
+  * QuickBMS execution
+  * BrickBench launching
+  * Nmap scanning UI
+  * Wireshark launching
+
+* Code Assistant Mode:
+
+  * explain code
+  * analyze snippets
+  * integrate runtime.code_explain()
+
+---
+
+# 🧠 LONG-TERM VISION
+
+AI OS becomes:
+
+A modular, extensible AI-powered desktop system with:
+
+* multiple work environments
+* tool orchestration
+* voice interaction
+* code intelligence
+* real-world tool integration
+
+---
+
+# 🧠 MULTI-LANGUAGE EXPANSION (IMPORTANT CONTEXT)
+
+The system WILL expand beyond Python.
+
+Key concept:
+
+"What a Multi-Language Framework Can Do
+
+Using multiple languages allows your framework to transcend Python's inherent limitations:
+
+* Performance Optimization:
+  Use C++ / Fortran for heavy computation while Python handles UI
+
+* Specialized Libraries:
+  Use R (via rpy2), Java libraries, etc.
+
+* Full-Stack Integration:
+  Python backend + JS frontend (future)
+
+* Game Development:
+  Python logic + C++ rendering
+
+* Security & Obfuscation:
+  Multi-language tooling for robustness and flexibility
+  "
+
+This MUST be considered in architecture decisions going forward.
+
+---
+
+# ⚠️ IMPORTANT RULES
+
+* DO NOT rewrite the system from scratch
+* DO NOT remove modular structure
+* DO NOT collapse interfaces into one system
+* DO NOT replace Tkinter unless explicitly told
+
+You are EXTENDING an existing system.
+
+---
+
+# 🧠 WHAT YOU SHOULD DO NEXT
+
+1. Help fix remaining UI/logic issues cleanly
+2. Improve stability of interface switching
+3. Help implement real modules (starting simple)
+4. Keep architecture scalable for future language integration
+
+---
+
+# 🔥 STYLE OF HELP NEEDED
+
+* Clear rewrites (not partial snippets)
+* Explain where code goes
+* Respect current structure
+* Avoid overengineering
+* Build incrementally
+
+---
+
+Continue exactly where this left off.

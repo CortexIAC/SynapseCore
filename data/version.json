@@ -1,0 +1,15 @@
+{
+  "version": "0.1.0",
+  "changelog": {
+    "added": [
+      "Modular runtime system",
+      "Dynamic module loader"
+    ],
+    "changed": [
+      "Refactored UI layout system"
+    ],
+    "fixed": [
+      "CEF browser initialization"
+    ]
+  }
+}
