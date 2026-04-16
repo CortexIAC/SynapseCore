@@ -8,7 +8,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/status-active-brightgreen"/>
-  <img src="https://img.shields.io/badge/build-evolving-yellow"/>
+  <img src="https://img.shields.io/badge/build-Aura-yellow"/>
   <img src="https://img.shields.io/badge/python-3.9+-blue"/>
   <img src="https://img.shields.io/badge/platform-local--first-green"/>
   <img src="https://img.shields.io/badge/AI-Ollama-00ff9c"/>
